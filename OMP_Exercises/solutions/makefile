@@ -8,7 +8,8 @@ include ../make.def
 EXES=hello_par$(EXE) pi_spmd_simple$(EXE) pi_spmd_final$(EXE) \
      pi_loop$(EXE) mandel_par$(EXE) pi_task$(EXE)  \
      mm_testbed$(EXE) jac_solv_parfor jac_solv_par_for$(EXE) \
-     racey_tasks$(EXE) pi_vec$(EXE) jac_solv_simd$(EXE)
+     racey_tasks$(EXE) pi_vec$(EXE) jac_solv_simd$(EXE) hist_par$(EXE)\
+     linked_notasks$(EXE) linked_tasks$(EXE) 
 
 MM_OBJS  = mm_testbed.$(OBJ) mm_utils.$(OBJ) mm_tst_cases.$(OBJ) \
            mm_ijk.$(OBJ) mm_ikj.$(OBJ) mm_ikj_par.$(OBJ) mm_trans.$(OBJ)
@@ -18,6 +19,8 @@ JAC_PAR_FOR_OBJS  = jac_solv_par_for.$(OBJ) mm_utils.$(OBJ)
 JAC_PARFOR_OBJS  = jac_solv_parfor.$(OBJ) mm_utils.$(OBJ) 
 
 JAC_SIMD_OBJS  = jac_solv_simd.$(OBJ) mm_utils.$(OBJ) 
+
+HIST_OBJS      = hist_par.$(OBJ) random.$(OBJ)
 
 all: $(EXES)
 
@@ -57,6 +60,15 @@ pi_task$(EXE): pi_task.$(OBJ)
 pi_vec$(EXE): pi_vec.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o pi_vec$(EXE) pi_vec.$(OBJ) $(LIBS)
 
+hist_par$(EXE): $(HIST_OBJS) random.h
+	$(CLINKER) $(OPTFLAGS) -o hist_par$(EXE) $(HIST_OBJS) $(LIBS)
+
+linked_notasks$(EXE): linked_notasks.$(OBJ) 
+	$(CLINKER) $(OPTFLAGS) -o linked_notasks$(EXE) linked_notasks.$(OBJ) $(LIBS)
+
+linked_tasks$(EXE): linked_tasks.$(OBJ) 
+	$(CLINKER) $(OPTFLAGS) -o linked_tasks$(EXE) linked_tasks.$(OBJ) $(LIBS)
+
 test: $(EXES)
 	$(PRE)hello_par$(EXE) 
 	$(PRE)pi_spmd_simple$(EXE) 
@@ -68,7 +80,11 @@ test: $(EXES)
 	$(PRE)jac_solv_parfor 
 	$(PRE)jac_solv_par_for$(EXE) 
 	$(PRE)racey_tasks$(EXE) 
-	$(PRE)pi_vec$(EXE)
+	$(PRE)pi_vec$(EXE)  
+	$(PRE)jac_solv_simd$(EXE) 
+	$(PRE)hist_par$(EXE)  
+	$(PRE)linked_notasks$(EXE) 
+	$(PRE)linked_tasks$(EXE) 
 
 clean:
 	$(RM) $(EXES) *.$(OBJ)

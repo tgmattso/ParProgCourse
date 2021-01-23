@@ -111,7 +111,7 @@ int main(int argc, char **argv)
         xold  = xtmp;
      }
 
-     #pragma omp parallel for private(i,j) 
+     #pragma omp parallel for private(i,j)
      for (i=0; i<Ndim; i++){
          xnew[i] = (TYPE) 0.0;
          for (j=0; j<Ndim;j++){
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
      //  
      // test convergence
      //
-     #pragma omp parallel for private(tmp) reduction(+:conv) 
+     #pragma omp parallel for private(tmp) reduction(+:conv)
      for (i=0; i<Ndim; i++){
          tmp  = xnew[i]-xold[i];
          conv += tmp*tmp;

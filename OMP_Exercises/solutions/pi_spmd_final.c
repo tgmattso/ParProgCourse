@@ -78,7 +78,7 @@ for(j=1;j<=MAX_THREADS ;j++){
 		  x = (i+0.5)*step;
 		  partial_sum += + 4.0/(1.0+x*x);
 	  }
-#pragma omp critical
+#pragma omp critical 
 		  full_sum += partial_sum;
 }
       

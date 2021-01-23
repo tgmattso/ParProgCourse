@@ -4,7 +4,7 @@
 int main ()  
 {
    int nthreads = 4;
-//   omp_set_num_threads(nthreads);
+   omp_set_num_threads(nthreads);
 
    #pragma omp parallel
    {
