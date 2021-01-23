@@ -1,8 +1,8 @@
 
-This repository holds the materials for an interactive parallel programming course.   After
-a brief lecture on parallel computing in general, we go over parallel programming in detail
-using OpenMP.  Then after a full day of OpenMP, we close with a quick lecture that covers
-other parallel programming models (MPI and OpenCL/CUDA).
+This repository holds the materials for an interactive parallel programming course.   For the
+full course, we start with a brief lecture on parallel computing in general.  The we cover
+parallel programming in detail using OpenMP.  After a full day of OpenMP, we close 
+with a quick lecture that covers other parallel programming models (MPI and OpenCL/CUDA).
 
 Note the LICENSE file.  Anyone can grab this content and do whatever you want with it.
 
@@ -14,7 +14,7 @@ Inside this directory there is a file where all macros used by the makefiles are
 
         make.def
         
- The directiory Make_def_files holds a number of example make.def files should you get stuck and 
+ The directory Make_def_files holds a number of example make.def files should you get stuck and 
  need help.
  
  As we said earlier, the exercises for the hands-on OpenMP tutorial are in the OMP_Exercises
@@ -24,7 +24,7 @@ Inside this directory there is a file where all macros used by the makefiles are
         solutions
         
 They are there for your own self-study, but if you are taking one of my tutorials on parallel programming,
-do not look at the solutions.  Looking up the answers in advance will damage your learning experience.
+do not look at the solutions.  Looking up the answers in advance will diminish your learning experience.
 
 We also have a set of extra problems you can work with for more advanced study.  they are found in
 the directory:
