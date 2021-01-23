@@ -9,7 +9,7 @@ EXES=hello_par$(EXE) pi_spmd_simple$(EXE) pi_spmd_final$(EXE) \
      pi_loop$(EXE) mandel_par$(EXE) pi_task$(EXE)  \
      mm_testbed$(EXE) jac_solv_parfor jac_solv_par_for$(EXE) \
      racey_tasks$(EXE) pi_vec$(EXE) jac_solv_simd$(EXE) hist_par$(EXE)\
-     linked_notasks$(EXE) linked_tasks$(EXE) 
+     linked_notasks$(EXE) linked_tasks$(EXE)  pi_recur$(EXE)
 
 MM_OBJS  = mm_testbed.$(OBJ) mm_utils.$(OBJ) mm_tst_cases.$(OBJ) \
            mm_ijk.$(OBJ) mm_ikj.$(OBJ) mm_ikj_par.$(OBJ) mm_trans.$(OBJ)
@@ -47,6 +47,9 @@ pi_spmd_final$(EXE): pi_spmd_final.$(OBJ)
 
 pi_loop$(EXE): pi_loop.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o pi_loop$(EXE) pi_loop.$(OBJ) $(LIBS)
+
+pi_recur$(EXE): pi_recur.$(OBJ) 
+	$(CLINKER) $(OPTFLAGS) -o pi_recur$(EXE) pi_recur.$(OBJ) $(LIBS)
 
 mandel_par$(EXE): mandel_par.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o mandel_par$(EXE) mandel_par.$(OBJ) $(LIBS)
