@@ -28,8 +28,8 @@ int main ()
         	 
 	  start_time = omp_get_wtime();
 
-	  for (i=1;i<= num_steps; i++){
-		  x = (i-0.5)*step;
+	  for (i=0;i<= num_steps; i++){
+		  x = (i+0.5)*step;
 		  sum = sum + 4.0/(1.0+x*x);
 	  }
 
