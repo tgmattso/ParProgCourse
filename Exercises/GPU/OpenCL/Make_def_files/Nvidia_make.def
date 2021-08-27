@@ -1,0 +1,14 @@
+# for g++ compiler on linux for Nvidia GPUs
+# copy to make.def
+CC          = gcc
+CLINKER     = $(CC)
+OPTFLAGS    = -std=c99 -fopenmp -DAPPLE -O3 -I/usr/local/cuda/include
+LIBS        = -lm
+PRE         = ./
+
+CFLAGS	  = $(OPTFLAGS)
+OCL_LIBS = -L/usr/local/cuda/lib64 -lOpenCL
+
+OBJ=o
+EXE=
+RM=rm -f

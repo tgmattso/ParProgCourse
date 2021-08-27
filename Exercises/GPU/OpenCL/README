@@ -1,0 +1,27 @@
+
+These code in this directory supports a hands-on OpenCL tutorial.  
+With such a diversity of OpenCL platforms, there can be issues as
+you port this code form one platform to the next.  Most issues
+are dealt with in the file that sets macros used inside the makefile.
+These are set in the make.def file.  Other issues, however, are 
+exposed inside the source code.
+
+Common problems:
+
+The C code and the OpenCL kernel code need to know the types used in 
+these programs.  Hence, we have no choice but to encode this type in
+two places.   That means you can have a mismatch between C and the
+OpenCL code.  Make sure the type (set by the macro TYPE) is the same
+in mm_utils.h and the ".cl" files you are using.
+
+Some GPUs do not support double.  For example, the GEN GPU integrated
+with an Intel CPU often only supports float.  Since we don't test if
+double is supported in the kernel code, if you try to go with double
+the numerics will be all screwed up and you'll get results with lots
+of NANs.
+
+The Apple implementation of OpenCL stupidly limits the local 
+work-group size on a CPU to be one. This is insane, but they won't 
+change.  We don't test this in tutorial code since we need things to 
+be as uncluttered as possible.  So make sure the WGSIZE parameter 
+in your host code is set to 1 when you are running on a CPU under OSX.

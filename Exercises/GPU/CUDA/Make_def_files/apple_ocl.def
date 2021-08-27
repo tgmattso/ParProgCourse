@@ -1,0 +1,16 @@
+#
+# Make.def file for Apple's OpenCL SDK running on Lion
+CC          = nvcc
+CLINKER = $(CC)
+
+OPENCLFLAGS = -framework OpenCL
+CLINKER = g++-mp-4.8 $(OPENCLFLAGS) -lcudart -L/usr/local/cuda/lib
+
+CFLAGS  = -O3 -I$(COMMON)
+CPPFLAGS = $(CFLAGS)
+
+LIBS = -lm
+OBJ=o
+EXE=
+RM=rm -f
+PRE=./

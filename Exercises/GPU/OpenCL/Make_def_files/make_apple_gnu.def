@@ -1,0 +1,17 @@
+# for g++ compiler on Apple OS-X
+# copy to make.def
+#CC          = icc
+CC          = g++
+CLINKER     = $(CC)
+OPTFLAGS    = -fopenmp -DAPPLE -O3
+#OPTFLAGS    = -fopenmp -DAPPLE 
+LIBS        = -lm
+PRE         = ./
+
+CFLAGS	  = $(OPTFLAGS)
+OCL_LIBS 	= -framework OpenCL
+
+
+OBJ=o
+EXE=
+RM=rm -f
