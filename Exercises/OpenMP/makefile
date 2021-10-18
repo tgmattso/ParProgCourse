@@ -6,7 +6,7 @@
 
 include make.def
 
-EXES=hello$(EXE) pi$(EXE) mandel$(EXE) linked$(EXE) 
+EXES=hello$(EXE) pi$(EXE) mandel$(EXE) linked$(EXE) hist$(EXE) linked$(EXE)
 
 all: $(EXES)
 
@@ -16,8 +16,11 @@ hello$(EXE): hello.$(OBJ)
 pi$(EXE): pi.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o pi pi.$(OBJ) $(LIBS)
 
-pi_recur$(EXE): pi_recur.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o pi_recur pi_recur.$(OBJ) $(LIBS)
+hist$(EXE): hist.$(OBJ) random.$(OBJ)
+	$(CLINKER) $(OPTFLAGS) -o hist hist.$(OBJ) random.$(OBJ) $(LIBS)
+
+#pi_recur$(EXE): pi_recur.$(OBJ) 
+#	$(CLINKER) $(OPTFLAGS) -o pi_recur pi_recur.$(OBJ) $(LIBS)
 
 mandel$(EXE):  mandel.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o mandel mandel.$(OBJ) $(LIBS)
